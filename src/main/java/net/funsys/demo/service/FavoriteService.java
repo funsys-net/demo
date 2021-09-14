@@ -44,14 +44,19 @@ public class FavoriteService {
 
     public FavoriteEntity create(FavoriteEntity entity) throws RecordNotFoundException {
 
+        Optional<MovieEntity> movie = movieRepository.findById(entity.getId());
+
         Optional<FavoriteEntity> favorite = favoriteRepository.findById(entity.getId());
 
-        if (favorite.isPresent()) {
-            throw new RecordNotFoundException("This movie is already added to favorite");
-        } else {
-            entity = favoriteRepository.save(entity);
-
+        if (movie.isPresent()) {
+            if (favorite.isPresent()) {
+                // TODO
+            } else {
+                entity = favoriteRepository.save(entity);
+            }
             return entity;
+        } else {
+            throw new RecordNotFoundException("No movie is found by given ID");
         }
     }
 

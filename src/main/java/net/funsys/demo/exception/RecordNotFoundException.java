@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class RecordNotFoundException extends Exception {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6590466023648432697L;
 	
 	public RecordNotFoundException(String message) {
 		super(message);
